@@ -31,7 +31,7 @@
                 <div class="container mdl-grid">
                     <div class="mdl-cell mdl-cell--3-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
                     <div class="content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--6-col">
-                        <p><?= $_SESSION['LOOKUPS']['text']['done'] ?></p>
+                        <p><?= nl2br($_SESSION['LOOKUPS']['text']['done']) ?></p>
                         <div style="text-align: center">
                             <img alt='Done' src='/images/done.png' />
                         </div>

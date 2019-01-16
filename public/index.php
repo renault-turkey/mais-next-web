@@ -37,7 +37,7 @@
                         <div class="mdl-card__title">
                             <h2 class="mdl-card__title-text"><?= $_SESSION['LOOKUPS']['text']['caption'] ?></h2>
                         </div>
-                        <p><?= $_SESSION['LOOKUPS']['text']['home'] ?></p>
+                        <p><?= nl2br($_SESSION['LOOKUPS']['text']['home']); ?></p>
                         <div style="text-align: center">
                             <img alt='Home' src='/images/home.png' />
                         </div>
