@@ -71,6 +71,7 @@ if (!empty($_POST)) {
         <link rel="stylesheet" href="/css/getmdl-select.min.css">
         <link rel="stylesheet" href="/css/mdl-autocomplete.css">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-deep_orange.min.css" /> 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
         <div class="layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
@@ -84,18 +85,27 @@ if (!empty($_POST)) {
                                 <h2 class="mdl-card__title-text">Öneriniz</h2>
                             </div>
                             <div class="form-element">
-                                <div class="input-label">Öneri Tipi</div>
+                                <div>Öneri Tipi</div>
+                                <select name="type" class="select2" style="width: 100%" required>
+                                    <option>Öneri tipini seçin</option>
+                                    <?php foreach ($_SESSION['LOOKUPS']['suggestionType'] as $k => $v) : ?>
+                                        <option value="<?= $k ?>"><?= $v ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <br/><br/>
+                                <!--
                                 <div class="mdl-textfield mdl-js-textfield getmdl-select">
                                     <input type="text" class="mdl-textfield__input" id="type" required>
                                     <input type="hidden" value="" name="type">
                                     <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                                     <label for="type" class="mdl-textfield__label">Öneri Tipini Seçin</label>
                                     <ul for="type" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                                        <?php foreach ($_SESSION['LOOKUPS']['suggestionType'] as $k => $v) : ?>
-                                            <li class="mdl-menu__item" data-val="<?= $k ?>"><?= $v ?></li>
-<?php endforeach; ?>
+                                <?php foreach ($_SESSION['LOOKUPS']['suggestionType'] as $k => $v) : ?>
+                                                    <li class="mdl-menu__item" data-val="<?= $k ?>"><?= $v ?></li>
+                                <?php endforeach; ?>
                                     </ul>
                                 </div>
+                                -->
                             </div>
                             <div class="form-element">
                                 <div class="input-label">Öneri Başlığı</div>
@@ -149,9 +159,11 @@ if (!empty($_POST)) {
             integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
         crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script type="text/javascript">
-
+                                            $(document).ready(function () {
+                                                $('.select2').select2();
+                                            });
                                             /**
                                              * Check the validity state and update field accordingly.
                                              *
